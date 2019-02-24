@@ -19,15 +19,15 @@
     }
   </script>
   <script>
-    var isLoggedIn = false
-    var isLoggedInText = document.getElementById("isLoggedIn")
+    var isLoggedIn = false;
+    var isLoggedInText = document.getElementById("isLoggedIn");
     setInterval(function(){
       if (profile.getId()!=null) {
         isLoggedIn = true;
-        isLoggedInText.innerHTML = "You are logged in."
+        isLoggedInText.innerHTML = "You are logged in.";
       } else {
         isLoggedIn = false;
-        isLoggedInText.innerHTML = "You are not logged in."
+        isLoggedInText.innerHTML = "You are not logged in.";
       }
     }, 1000);
     function onSignIn(googleUser) {
