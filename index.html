@@ -19,6 +19,14 @@
     }
   </script>
   <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
+      document.getElementById("username").innerHTML = 'Name: ' + profile.getName();
+      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
+      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
+    }
+    
     var isLoggedIn = false;
     var isLoggedInText = document.getElementById("isLoggedIn");
     setInterval(updateLoggedIn, 100);
@@ -30,13 +38,6 @@
         isLoggedIn = false;
         isLoggedInText.innerHTML = "You are not logged in.";
       }
-    }
-    function onSignIn(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
-      document.getElementById("username").innerHTML = 'Name: ' + profile.getName();
-      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
-      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
     }
   </script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
