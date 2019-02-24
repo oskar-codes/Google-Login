@@ -20,12 +20,11 @@
   <script>
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
-      document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();
+      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
       document.getElementById("username").innerHTML = 'Name: ' + profile.getName();
-      profile.getImageUrl()
-      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
+      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     }
   </script>
-<!--   503242149682-hihrvbnlppr06k34267ifklv4nhahucr.apps.googleusercontent.com  -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
