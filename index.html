@@ -1,5 +1,6 @@
 <head>
   <title>Google login test</title>
+  <meta name="google-signin-client_id" content="503242149682-hihrvbnlppr06k34267ifklv4nhahucr.apps.googleusercontent.com">
 </head>
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -15,7 +16,7 @@
         console.log('User signed out.');
        });
     }
-</script>
+  </script>
   <script>
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
