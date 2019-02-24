@@ -6,8 +6,8 @@
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <p id="userId"></p>
   <p id="username"></p>
-  <img id="profilePicture"></img>
   <p id=emailAdress></p>
+  <img id="profilePicture"></img>
   <a href="#" onclick="signOut();">Sign out</a>
   <script>
     function signOut() {
@@ -18,6 +18,14 @@
     }
   </script>
   <script>
+    var isLoggedIn = false
+    setInterval(function(){
+      if (profile.getId()!=null) {
+        isLoggedIn = true;
+      } else {
+        isLoggedIn = false;
+      }
+    }, 1000);
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
