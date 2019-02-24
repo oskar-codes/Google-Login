@@ -4,6 +4,7 @@
 </head>
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <p id="isLoggedIn"></p>
   <p id="userId"></p>
   <p id="username"></p>
   <p id=emailAdress></p>
@@ -19,11 +20,14 @@
   </script>
   <script>
     var isLoggedIn = false
+    var isLoggedInText = document.getElementById("isLoggedIn")
     setInterval(function(){
       if (profile.getId()!=null) {
         isLoggedIn = true;
+        isLoggedInText.innerHTML = "You are logged in."
       } else {
         isLoggedIn = false;
+        isLoggedInText.innerHTML = "You are not logged in."
       }
     }, 1000);
     function onSignIn(googleUser) {
