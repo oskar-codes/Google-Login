@@ -3,13 +3,18 @@
   <meta name="google-signin-client_id" content="503242149682-hihrvbnlppr06k34267ifklv4nhahucr.apps.googleusercontent.com">
 </head>
 <body>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  <p id="isLoggedIn">You are not logged in</p>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+  <div id="signIn" class="g-signin2" data-onsuccess="onSignIn"></div>
+  <p id="isLoggedIn">You are not logged in.</p>
   <p id="userId"></p>
   <p id="username"></p>
   <p id=emailAdress></p>
   <img id="profilePicture"></img>
-  <a href="#" onclick="signOut();">Sign out</a>
+  <a href="#" onclick="signOut();" id="signOut">Sign out</a>
   <script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -32,8 +37,12 @@
     function updateLoggedIn() {
       if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
+        document.getElementById("signOut").classList.remove("hide");
+        document.getElementById("signIn").classList.add("hide");
       } else {
         isLoggedInText.innerHTML = "You are not logged in.";
+        document.getElementById("signOut").classList.add("hide");
+        document.getElementById("signIn").classList.remove("hide");
       }
     }
   </script>
