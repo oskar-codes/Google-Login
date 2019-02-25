@@ -27,15 +27,12 @@
       document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
     }
     
-    var isLoggedIn = false;
     var isLoggedInText = document.getElementById("isLoggedIn");
     setInterval(updateLoggedIn, 100);
     function updateLoggedIn() {
-      if (profile.getId()!=null) {
-        isLoggedIn = true;
+      if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
       } else {
-        isLoggedIn = false;
         isLoggedInText.innerHTML = "You are not logged in.";
       }
     }
