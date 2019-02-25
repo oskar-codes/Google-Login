@@ -8,13 +8,12 @@
       display: none;
     }
   </style>
-  <div id="signIn" class="g-signin2" data-onsuccess="onSignIn"></div>
+  <div id="signIn" class="g-signin2 hide-if-logged" data-onsuccess="onSignIn"></div>
   <p id="isLoggedIn">You are not logged in.</p>
-  <p id="userId"></p>
-  <p id="username"></p>
-  <p id=emailAdress></p>
-  <img id="profilePicture"></img>
-  <a href="#" onclick="signOut();" id="signOut">Sign out</a>
+  <p id="username" class="show-if-logged"></p>
+  <p id=emailAdress class="show-if-logged"></p>
+  <img id="profilePicture" class="show-if-logged"></img>
+  <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>
   <script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -37,12 +36,28 @@
     function updateLoggedIn() {
       if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
-        document.getElementById("signOut").classList.remove("hide");
-        document.getElementById("signIn").classList.add("hide");
+        var showIfLogged = document.getElementsByClassName("show-if-logged");
+        for (var i = 0; i < showIfLogged.length; i++) {
+          var item = showIfLogged[i];
+          item.classList.remove("hide");
+        }
+        var hideIfLogged = document.getElementsByClassName("hide-if-logged");
+        for (var i = 0; i < hideIfLogged.length; i++) {
+          var item = hideIfLogged[i];
+          item.classList.add("hide");
+        }
       } else {
         isLoggedInText.innerHTML = "You are not logged in.";
-        document.getElementById("signOut").classList.add("hide");
-        document.getElementById("signIn").classList.remove("hide");
+        var showIfLogged = document.getElementsByClassName("show-if-logged");
+        for (var i = 0; i < showIfLogged.length; i++) {
+          var item = showIfLogged[i];
+          item.classList.add("hide");
+        }
+        var hideIfLogged = document.getElementsByClassName("hide-if-logged");
+        for (var i = 0; i < hideIfLogged.length; i++) {
+          var item = hideIfLogged[i];
+          item.classList.remove("hide");
+        }
       }
     }
   </script>
