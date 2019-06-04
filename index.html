@@ -28,9 +28,18 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
-      <div class="btn btn-outline-success my-2 my-sm-0 show-if-logged"><a href="#" onclick="signOut()">Sign out</a></div>
+      <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged" id="signIn" data-onsuccess="onSignIn">Sign in</div>
     </form>
+    <li class="nav-item dropdown show-if-logged">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img id="profilePicture">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://oskar-codes.github.io/account">My account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" onclick="signOut()" href="#">Sign out</a>
+        </div>
+      </li>
   </div>
 </nav>
   
@@ -38,7 +47,7 @@
   <p id="isLoggedIn">You are not logged in.</p>
   <p id="username" class="show-if-logged"></p>
   <p id=emailAdress class="show-if-logged"></p>
-  <img id="profilePicture" class="show-if-logged"></img>
+  <!--<img id="profilePicture" class="show-if-logged"></img>-->
   <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>
   <script>
     function signOut() {
