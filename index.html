@@ -21,23 +21,23 @@
   </style>
   
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Google login test</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="#">Google login test</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="https://oskar-codes.github.io/Google-Login">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://oskar-codes.github.io/Google-Login/about">About</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" data-onsuccess="onSignIn"Sign in</div>
-      </form>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login/about">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
+    </form>
       <li class="show-if-logged nav-item dropdown">
         <a class="username nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </a>
@@ -47,8 +47,8 @@
           <a class="dropdown-item" href="#" onclick="signOut()">Sign out</a>
         </div>
       </li>
-    </div>
-  </nav>
+  </div>
+</nav>
   
   <div class="container">
     <h3 class="header">Google login test</h3>
