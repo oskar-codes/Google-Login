@@ -62,7 +62,7 @@
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
-      document.getElementById("username").innerHTML = 'Name: ' + profile.getName();
+      document.getElementById("username").innerHTML = profile.getName();
       document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
       document.getElementById("profilePicture").style.width = "40px";
       document.getElementById("profilePicture").style.height = "40px";
