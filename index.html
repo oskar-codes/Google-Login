@@ -31,7 +31,7 @@
         <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
       </form>
         <li class="show-if-logged nav-item dropdown">
-          <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="username nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="https://oskar-codes.github.io/Google-Login/account">Account</a>
@@ -57,13 +57,26 @@
     }
     
     function onSignIn(googleUser) {
+      /* GET GOOGLE INFO ON SIGN IN */
       var profile = googleUser.getBasicProfile();
-      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
-      document.getElementById("username").innerHTML = profile.getName();
-      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
-      document.getElementById("profilePicture").style.width = "40px";
-      document.getElementById("profilePicture").style.height = "40px";
-      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
+      
+      /* SET ALL USERNAMES */
+      var usernames = document.getElementsByClassName("username");
+      for (var i = 0; i < usernames.length; i++) {
+        usernames[i].innerHTML = profile.getName();
+      }
+      
+      /* SET ALL PROFILE PICTURES */
+      var images = document.getElementsByClassName("profilePicture");
+      for (var i = 0; i < images.length; i++) {
+        images[i].setAttribute("src", profile.getImageUrl());
+      }
+ 
+      /* SET ALL EMAILS */
+      var emails = document.getElementsByClassName("email");
+      for (var i = 0; i < emails.length; i++) {
+        emails[i].innerHTML = profile.getEmail(); // This is null if the 'email' scope is not present.
+      }
     }
     
     var isLoggedInText = document.getElementById("isLoggedIn");
