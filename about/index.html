@@ -31,7 +31,7 @@
       <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
     </form>
       <li class="show-if-logged nav-item dropdown">
-        <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="username nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="https://oskar-codes.github.io/Google-Login/account">Account</a>
@@ -39,32 +39,13 @@
           <a class="dropdown-item" href="#" onclick="signOut()">Sign out</a>
         </div>
       </li>
-    <!--<li class="nav-item dropdown show-if-logged">
-        <a class="nav-link dropdown-toggle show-if-logged" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="show-if-logged nav-item container form-inline">
-            <p style="display: inline;" class="show-if-logged nav-text" id="username"></p>
-            <img style="width=10px; height=10px;" id="profilePicture"></img>
-          </div>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="https://oskar-codes.github.io/account">My account</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" onclick="signOut()" href="#">Sign out</a>
-        </div>
-      </li>-->
   </div>
 </nav>
   <div class="container">
-    <h3 class="header">About</h3>
+    <h1 class="header">About</h3>
     <p class="description">This is a test of Google's login system.</p>
-    <p id="isLoggedIn">You are not logged in</p>
   </div>
-  <!--<div id="signIn" class="g-signin2 hide-if-logged" data-onsuccess="onSignIn"></div>
-  <p id="isLoggedIn">You are not logged in.</p>
-  <p id="username" class="show-if-logged"></p>
-  <p id=emailAdress class="show-if-logged"></p>
-  <img id="profilePicture" class="show-if-logged"></img>
-  <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>-->
+  
   <script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -72,16 +53,28 @@
         console.log('User signed out.');
        });
     }
-  </script>
-  <script>
+    
     function onSignIn(googleUser) {
+      /* GET GOOGLE INFO ON SIGN IN */
       var profile = googleUser.getBasicProfile();
-      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
-      document.getElementById("username").innerHTML = profile.getName();
-      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
-      document.getElementById("profilePicture").style.width = "40px";
-      document.getElementById("profilePicture").style.height = "40px";
-      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
+      
+      /* SET ALL USERNAMES */
+      var usernames = document.getElementsByClassName("username");
+      for (var i = 0; i < usernames.length; i++) {
+        usernames[i].innerHTML = profile.getName();
+      }
+      
+      /* SET ALL PROFILE PICTURES */
+      var images = document.getElementsByClassName("profilePicture");
+      for (var i = 0; i < images.length; i++) {
+        images[i].setAttribute("src", profile.getImageUrl());
+      }
+ 
+      /* SET ALL EMAILS */
+      var emails = document.getElementsByClassName("email");
+      for (var i = 0; i < emails.length; i++) {
+        emails[i].innerHTML = profile.getEmail(); // This is null if the 'email' scope is not present.
+      }
     }
     
     var isLoggedInText = document.getElementById("isLoggedIn");
