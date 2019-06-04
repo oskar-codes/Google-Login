@@ -55,14 +55,10 @@
     <p class="description">This is the account page.</p>
     <img style="float: right;" class="show-if-logged profilePicture"></img>
     <p id="isLoggedIn">You are not logged in</p>
-    <p class="show-if-logged">Your email adress is: </p><p style="display: inline;" class="show-if-logged email"></p>
+    <p class="show-if-logged">Your email adress is: </p>
+    <p style="display: inline;" class="show-if-logged email"></p>
   </div>
-  <!--<div id="signIn" class="g-signin2 hide-if-logged" data-onsuccess="onSignIn"></div>
-  <p id="isLoggedIn">You are not logged in.</p>
-  <p id="username" class="show-if-logged"></p>
-  <p id="emailAdress" class="show-if-logged"></p>
-  <img id="profilePicture" class="show-if-logged"></img>
-  <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>-->
+
   <script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -70,8 +66,7 @@
         console.log('User signed out.');
        });
     }
-  </script>
-  <script>
+    
     function onSignIn(googleUser) {
       /* GET GOOGLE INFO ON SIGN IN */
       var profile = googleUser.getBasicProfile();
