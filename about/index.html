@@ -1,1 +1,121 @@
+<head>
+  <title>Google login test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-client_id" content="503242149682-hihrvbnlppr06k34267ifklv4nhahucr.apps.googleusercontent.com">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Google login test</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login/about">About</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
+    </form>
+      <li class="show-if-logged nav-item dropdown">
+        <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/account">Account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" onclick="signOut()">Sign out</a>
+        </div>
+      </li>
+    <!--<li class="nav-item dropdown show-if-logged">
+        <a class="nav-link dropdown-toggle show-if-logged" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="show-if-logged nav-item container form-inline">
+            <p style="display: inline;" class="show-if-logged nav-text" id="username"></p>
+            <img style="width=10px; height=10px;" id="profilePicture"></img>
+          </div>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://oskar-codes.github.io/account">My account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" onclick="signOut()" href="#">Sign out</a>
+        </div>
+      </li>-->
+  </div>
+</nav>
+  <div class="container">
+    <h3 class="header">About</h3>
+    <p class="description">This is a test of Google's login system.</p>
+    <p id="isLoggedIn">You are not logged in</p>
+  </div>
+  <!--<div id="signIn" class="g-signin2 hide-if-logged" data-onsuccess="onSignIn"></div>
+  <p id="isLoggedIn">You are not logged in.</p>
+  <p id="username" class="show-if-logged"></p>
+  <p id=emailAdress class="show-if-logged"></p>
+  <img id="profilePicture" class="show-if-logged"></img>
+  <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>-->
+  <script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+       auth2.signOut().then(function () {
+        console.log('User signed out.');
+       });
+    }
+  </script>
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
+      document.getElementById("username").innerHTML = profile.getName();
+      document.getElementById("profilePicture").setAttribute("src", profile.getImageUrl());
+      document.getElementById("profilePicture").style.width = "40px";
+      document.getElementById("profilePicture").style.height = "40px";
+      document.getElementById("emailAdress").innerHTML = 'Email: ' + profile.getEmail(); // This is null if the 'email' scope is not present.
+    }
+    
+    var isLoggedInText = document.getElementById("isLoggedIn");
+    setInterval(updateLoggedIn, 100);
+    function updateLoggedIn() {
+      if (gapi.auth2.init().isSignedIn.get()) {
+        isLoggedInText.innerHTML = "You are logged in.";
+        var showIfLogged = document.getElementsByClassName("show-if-logged");
+        for (var i = 0; i < showIfLogged.length; i++) {
+          var item = showIfLogged[i];
+          item.classList.remove("hide");
+        }
+        var hideIfLogged = document.getElementsByClassName("hide-if-logged");
+        for (var i = 0; i < hideIfLogged.length; i++) {
+          var item = hideIfLogged[i];
+          item.classList.add("hide");
+        }
+      } else {
+        isLoggedInText.innerHTML = "You are not logged in.";
+        var showIfLogged = document.getElementsByClassName("show-if-logged");
+        for (var i = 0; i < showIfLogged.length; i++) {
+          var item = showIfLogged[i];
+          item.classList.add("hide");
+        }
+        var hideIfLogged = document.getElementsByClassName("hide-if-logged");
+        for (var i = 0; i < hideIfLogged.length; i++) {
+          var item = hideIfLogged[i];
+          item.classList.remove("hide");
+        }
+      }
+    }
+  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
