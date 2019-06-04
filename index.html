@@ -13,58 +13,41 @@
   </style>
   
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Google login test</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <a class="navbar-brand" href="#">Google login test</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://oskar-codes.github.io/Google-Login/about">About</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
-    </form>
-      <li class="show-if-logged nav-item dropdown">
-        <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="https://oskar-codes.github.io/Google-Login/account">Account</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" onclick="signOut()">Sign out</a>
-        </div>
-      </li>
-    <!--<li class="nav-item dropdown show-if-logged">
-        <a class="nav-link dropdown-toggle show-if-logged" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="show-if-logged nav-item container form-inline">
-            <p style="display: inline;" class="show-if-logged nav-text" id="username"></p>
-            <img style="width=10px; height=10px;" id="profilePicture"></img>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="https://oskar-codes.github.io/Google-Login">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://oskar-codes.github.io/Google-Login/about">About</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <div class="btn btn-outline-success my-2 my-sm-0 hide-if-logged g-signin2" id="signIn" data-onsuccess="onSignIn">Sign in</div>
+      </form>
+        <li class="show-if-logged nav-item dropdown">
+          <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="https://oskar-codes.github.io/Google-Login/account">Account</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" onclick="signOut()">Sign out</a>
           </div>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="https://oskar-codes.github.io/account">My account</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" onclick="signOut()" href="#">Sign out</a>
-        </div>
-      </li>-->
-  </div>
-</nav>
+        </li>
+    </div>
+  </nav>
+  
   <div class="container">
     <h3 class="header">Google login test</h3>
     <p class="description">This is a test of Google's login system.</p>
     <p id="isLoggedIn">You are not logged in</p>
   </div>
-  <!--<div id="signIn" class="g-signin2 hide-if-logged" data-onsuccess="onSignIn"></div>
-  <p id="isLoggedIn">You are not logged in.</p>
-  <p id="username" class="show-if-logged"></p>
-  <p id=emailAdress class="show-if-logged"></p>
-  <img id="profilePicture" class="show-if-logged"></img>
-  <a href="#" class="show-if-logged" onclick="signOut();">Sign out</a>-->
+  
   <script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -72,8 +55,7 @@
         console.log('User signed out.');
        });
     }
-  </script>
-  <script>
+    
     function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       /*document.getElementById("userId").innerHTML = 'ID: ' + profile.getId();*/
@@ -85,7 +67,7 @@
     }
     
     var isLoggedInText = document.getElementById("isLoggedIn");
-    setInterval(updateLoggedIn, 100);
+    setInterval(updateLoggedIn, 30);
     function updateLoggedIn() {
       if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
