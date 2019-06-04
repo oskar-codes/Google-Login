@@ -20,7 +20,7 @@
     }
   </style>
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand" href="#">Google login test</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
     }
     
     var isLoggedInText = document.getElementById("isLoggedIn");
-    setInterval(updateLoggedIn, 100);
+    setInterval(updateLoggedIn, 30);
     function updateLoggedIn() {
       if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
