@@ -92,7 +92,7 @@
     
     /* UPDATE SIGNED IN STATE */
     var isLoggedInText = document.getElementById("isLoggedIn");
-    setInterval(updateLoggedIn, 100);
+    setInterval(updateLoggedIn, 10);
     function updateLoggedIn() {
       if (gapi.auth2.init().isSignedIn.get()) {
         isLoggedInText.innerHTML = "You are logged in.";
