@@ -54,9 +54,28 @@
     <h3 class="header">Google login test</h3>
     <p class="description">This is a test of Google's login system.</p>
     <p id="isLoggedIn">You are not logged in</p>
+    <p>Your Google accounts are listed below :</p><button onclick="listAccounts();">Refresh</button>
   </div>
   
   <script>
+    function listAccounts() {
+      var request = gapi.client.analytics.management.accounts.list();
+      request.execute(printAccounts);
+    }
+
+    function printAccounts(results) {
+      if (results && !results.error) {
+        var accounts = results.items;
+        for (var i = 0, account; account = accounts[i]; i++) {
+          document.write('Account Name: ' + account.name);
+          /*console.log('Account Id: ' + account.id);
+          console.log('Account Kind: ' + account.kind);
+          console.log('Account Created: ' + account.created);
+          console.log('Account Updated: ' + account.updated);*/
+        }
+      }
+    }
+    
     window.onload = function() {
       updateLoggedIn();
     };
